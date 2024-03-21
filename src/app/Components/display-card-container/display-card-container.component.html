@@ -1,0 +1,26 @@
+<div class="book-count-row">
+    <div class="book-count-col1">
+        <h1>Books</h1><mat-hint>({{bookcount}}) items</mat-hint>
+    </div>
+    <div class="book-count-col2">
+        <select name="" id="basedOnPrice">
+            <option value="">Sort by relevance</option>
+            <option value="">Price : Low to High</option>
+            <option value="">Price : High to Low</option>
+            <option value="">Newest Arraivals</option>
+        </select>
+    </div>
+</div>
+
+<br>
+
+<div class="card-container" >
+    <ng-container *ngFor="let book of BooksPrint | paginate:{itemsPerPage:booksize, currentPage:page, totalItems:count}">
+        <app-cards [Book]="book">
+
+        </app-cards>
+    </ng-container>
+</div>
+<div class="prev-next">
+    <pagination-controls previousLabel="" nextLabel="" (pageChange)="onTableDataChange($event)"></pagination-controls>
+</div>

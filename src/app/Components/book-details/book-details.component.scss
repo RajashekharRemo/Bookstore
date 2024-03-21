@@ -1,0 +1,395 @@
+
+.homeOrBook{
+    width: 66%;
+    margin: 0px auto;
+    margin-top: 5px;
+    height: 40px;
+}
+
+.details{
+    width: 66%;
+    margin: 0px auto;
+    margin-top: 5px;
+    //border:  2px solid;
+    display: grid;
+    grid-template-columns: 330px auto;
+}
+
+
+.homeOrBook mat-hint, .homeOrBook span{
+    cursor: pointer;
+
+}
+
+
+.img-buttons{
+    width: 330px;
+    height: 440px;
+    //border: 2px solid;
+}
+
+
+
+.img{
+    width: 330px;
+    height: 370px;
+    border: 2px solid #E2E2E2;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.img img{
+    width: 250px;
+    height: 310px;
+    margin: 0px auto;
+}
+
+.btn-add-wishlist{
+    
+    display: flex;
+    justify-content: space-between;
+    //border: 2px solid;
+    margin-top: 35px;
+}
+
+.btn-add-wishlist .add-to-bag{
+    width: 140px;
+    height: 30px;
+    background-color: #A03037;
+    border: none;
+    color: white;
+}
+
+.btn-add-wishlist .wishlist{
+    width: 140px;
+    height: 30px;
+    background-color: #333333;
+    border: none;
+    color: white;
+}
+
+.btn-add-wishlist .wishlist mat-icon{
+    font-size: medium;
+    position: relative;
+    top: 3px;
+}
+
+
+.details-content{
+    padding-left: 20px;
+    //border: 2px solid;
+}
+
+.details-content p{
+    font: normal normal normal 25px/21px Roboto;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.auther{
+    font-size: large;  
+    //padding-bottom: 5px;
+    position: relative;
+    bottom: 4px;
+}
+
+.rating{
+    background-color: #388e3c;
+    color: white;
+    padding: 3px 2px 3px 10px;
+    margin-right: 3px;
+}
+
+.rating mat-icon{
+    font-size: medium;
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
+}
+
+
+.price{
+    font: normal normal normal 25px/21px Roboto;
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 5px;
+}
+
+.actualPrice{
+    text-decoration: line-through;
+    position: relative;
+    bottom: 4px;
+    margin-left: 10px;
+}
+
+.book-details{
+    margin:20px 0px 20px 0px;
+    //border: 2px solid;
+}
+
+.book-details ul{
+    padding-left: 17px;
+}
+
+.book-details ul li mat-hint{
+    font-weight: 500;
+}
+
+.feedback-row{
+    //border: 2px solid;
+    margin-top: 16px;
+}
+
+.feedback-row .rating-row{
+    width: 99.3%;
+    height: 170px;
+    //border: 2px solid;
+    padding-left: 13px;
+    background-color: #f9f9f9;
+}
+
+
+.rating-row small{
+    font-weight: 500;
+    margin: 5px 0px 0px 2px;
+}
+
+.stars{
+    //border: 2px solid;
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+
+.stars mat-icon{
+    color: #8c8585;
+    cursor: pointer;
+}
+
+#textarea{
+    width: 96%;
+    margin-top: 8px;
+    padding: 6px 0px 0px 10px;
+    font: normal normal normal 15px/14px Roboto;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+    height: auto;
+    border: none;
+}
+
+.submit button{
+    border: none;
+    background-color: #3371B5;
+    width: 100px;
+    float: right;
+    height: 25px;
+    margin-top: 9px;
+    border-radius: 2px;
+    color: white;
+    margin-right: 15px;
+}
+
+.showML{
+    cursor: pointer;
+    color: #3371B5;
+    font-weight: 600;
+}
+
+.staractive{
+    color: orange !important;
+    //background-color: orange;
+}
+
+.increase-decrease{
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+    padding: 5.7px 12px;
+    // height: 35px;
+    // width: 35px;
+    // padding-bottom: 4px;
+    font-size: larger;
+    color: #726e6e;
+}
+
+.count{
+    width: 300px;
+    padding: 5px 20px;
+    margin: 2px 6px 0px 6px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #DBDBDB;
+    border-radius: 2px;
+    
+}
+
+@media only screen and (min-width:768px) and (max-width:1279px){
+
+    .details{
+        width: 66%;
+        margin: 0px auto;
+        margin-top: 5px;
+        //border:  2px solid;
+        display: grid;
+        grid-template-columns: 265px auto;
+    }
+
+    .img-buttons{
+        width: 265px;
+        height: 375px;
+        //border: 2px solid;
+    }
+
+    .img{
+        width: 265px;
+        height: 315px;
+        border: 2px solid #E2E2E2;
+    }
+
+    .img img{
+        width: 185px;
+        height: 245px;
+        margin: 0px auto;
+    }
+
+
+    .btn-add-wishlist .add-to-bag{
+        width: 125px;
+        height: 30px;
+    }
+    
+    .btn-add-wishlist .wishlist{
+        width: 125px;
+        height: 30px;
+    }
+
+    .details-content p{
+        font: normal normal normal 25px/21px Roboto;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .price{
+        font: normal normal normal 25px/21px Roboto;
+        font-weight: 400;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    #textarea{
+        width: 94%;
+    }
+
+}
+
+
+@media only screen and (min-width:481px) and (max-width:768px){
+
+    .details{
+        width: 66%;
+        margin: 0px auto;
+        margin-top: 5px;
+        //border:  2px solid;
+        display: grid;
+        grid-template-columns: 250px auto;
+    }
+
+    .img-buttons{
+        width: 250px;
+        height: 360px;
+        //border: 2px solid;
+    }
+
+    .img{
+        width: 250px;
+        height: 300px;
+    }
+
+    .img img{
+        width: 170px;
+        height: 230px;
+        margin: 0px auto;
+    }
+
+    .btn-add-wishlist .add-to-bag{
+        width: 110px;
+        height: 30px;
+    }
+    
+    .btn-add-wishlist .wishlist{
+        width: 110px;
+        height: 30px;
+    }
+
+    .details-content p{
+        font: normal normal normal 25px/21px Roboto;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .price{
+        font: normal normal normal 25px/21px Roboto;
+        font-weight: 400;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    #textarea{
+        width: 89%;
+    }
+}
+
+
+
+@media only screen and (min-width:0px) and (max-width:480px){
+
+    .details{
+        width: 66%;
+        margin: 0px auto;
+        margin-top: 5px;
+        //border:  2px solid;
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .img-buttons{
+        width: 230px;
+        height: 340px;
+        //border: 2px solid;
+    }
+
+    .img{
+        width: 230px;
+        height: 270px;
+    }
+
+    .img img{
+        width: 150px;
+        height: 210px;
+        margin: 0px auto;
+    } 
+
+    .details-content{
+        margin-top: 20px;
+    }
+
+    .details-content p{
+        font: normal normal normal 25px/21px Roboto;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .price{
+        font: normal normal normal 25px/21px Roboto;
+        font-weight: 400;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    #textarea{
+        width: 89%;
+    }
+
+}

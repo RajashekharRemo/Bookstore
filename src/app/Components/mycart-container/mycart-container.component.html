@@ -1,0 +1,31 @@
+
+<div class="homeOrBook">
+    <mat-hint routerLink="/cards">Home</mat-hint> / <span>My cart(1)</span>
+</div>
+
+<div class="row">
+    <div class="main-cart">
+        <span>
+            My cart(1)
+        </span>
+        <br><br>
+        <div class="image-content">
+            <img src="{{book.image}}" alt="" width="65px" height="85px">
+            <div class="content">
+                <span class="book-name">{{book.title}}</span>
+                <br>
+                <mat-hint class="auther-Name">by {{book.author}}</mat-hint><br>
+
+                <b>Rs. {{price}}</b><mat-hint class="line-through">Rs. {{book.actualPrice}}</mat-hint>
+                <br><br>
+                <span class="for-counter">
+                    <button class="increase-decrease" (click)="decreament()">-</button>
+                    <span class="count">{{count}}</span>
+                    <button class="increase-decrease" (click)="increament()">+</button>
+                </span>
+                <button class="remove">Remove</button>
+            </div>
+        </div>
+        <button class="place-order" (click)="bookOrder()">PLACE ORDER</button>
+    </div>
+</div>

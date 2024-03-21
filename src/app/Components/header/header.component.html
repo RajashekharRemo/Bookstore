@@ -1,0 +1,38 @@
+<nav class="nav-container">
+
+    <div class="nav-col1">
+        <img src="../../assets/BookLogo.png" alt="Book" srcset="" height="24px" width="31px">
+        <p>Bookstore</p>
+    </div>
+
+    <div class="nav-col2">
+        <div class="search-row">
+            <mat-icon>search</mat-icon>
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+
+    <div class="nav-col3">
+        <div class="loginDialog">
+            <ul>
+                <li>Login</li>
+                <li>SignUp</li>
+            </ul>
+        </div>
+        <div class="profile-cart">
+            <span class="person">
+                <span class="material-symbols-outlined">person</span>
+                    <br>
+                <label for="">Profile</label>
+            </span>
+
+            <span class="cart">
+                <span class="material-symbols-outlined" matBadge="{{notification}}" (click)="goToCart()">shopping_cart</span>
+                    <br>
+                <label for="">Cart</label>
+            </span>
+        </div>
+    </div>
+</nav>
+
+

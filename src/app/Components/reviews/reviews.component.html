@@ -1,0 +1,13 @@
+<div class="review-row">
+    <h3>{{initials}}</h3>
+    <div class="review-content-row">
+        <b>{{review.fullName}}</b>
+        <br>
+        <div class="stars">
+            <ng-container *ngFor="let st of stars">
+                <mat-icon [ngClass]="{'staractive':st<=review.stars}">star</mat-icon>
+            </ng-container>
+        </div>
+        <p>{{review.review}}</p>
+    </div>
+</div>

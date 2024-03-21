@@ -1,0 +1,45 @@
+
+<form action="" >
+
+    <label>Full Name</label><br>
+    <input type="text" name="fullName" [(ngModel)]="userObj.fullName" #fullName="ngModel" minlength="3" required>
+    <span  *ngIf="fullName.invalid && (fullName.touched || fullName.dirty)">
+        <mat-hint *ngIf="fullName.errors?.['required']">This is Required</mat-hint>
+        <mat-hint *ngIf="fullName.errors?.['minlength']">Min 3 characters needed </mat-hint>
+    </span>
+    <br>
+
+    <label>Email Id</label><br>
+    <input type="text" name="email" [(ngModel)]="userObj.email" #email="ngModel" minlength="8" required pattern="[A-Za-z0-9!#$%&*'_\-]+@[A-Za-z0-9_]+\.[a-z]{2,3}$">
+    
+    <span  *ngIf="email.invalid && (email.touched || email.dirty)">
+        <mat-hint *ngIf="email.errors?.['required']">This is Required</mat-hint><!--[class]="!email.touched?'email-m1':'email-m2'"-->
+        <mat-hint *ngIf="email.errors?.['minlength']">Min 8 characters needed & </mat-hint>
+        <mat-hint *ngIf="email.errors?.['pattern']">Pattern unmatched</mat-hint>
+    </span>
+    <br> 
+    <label>Password</label><br>
+    <div class="password">
+        <input [type]="password? 'text':'password'" name="password" [(ngModel)]="userObj.password" #password="ngModel" minlength="8" 
+        required pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_{\-}+'>?`])[A-Za-z0-9!@#$%^&*_{\-}+'>?`]{8,16}$">
+        <mat-icon  (click)="toggleEye()" *ngIf="password">visibility</mat-icon>
+        <mat-icon (click)="toggleEye()" *ngIf="!password">visibility_off</mat-icon>
+    </div>
+    <span *ngIf="password.invalid && (password.touched || password.dirty)" class="password-message">
+        <mat-hint id="errormessage"  *ngIf="password.errors?.['required']">this is required</mat-hint>
+        <mat-hint id="errormessage"  *ngIf="password.errors?.['minlength']">Min 8 characters needed</mat-hint>
+        <mat-hint id="errormessage"  *ngIf="password.errors?.['pattern']">Pattern unmatched</mat-hint>
+    </span>
+    <br>
+
+    <label class="mobile">Mobile Number</label><br>
+    <input type="text" class="mobile" name="phone" [(ngModel)]="userObj.phone" #phone="ngModel" minlength="10" required>
+    <span  *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+        <mat-hint *ngIf="phone.errors?.['required']">This is Required</mat-hint>
+        <mat-hint *ngIf="phone.errors?.['minlength']">Min 10 characters needed </mat-hint>
+    </span>
+    <br>
+
+    <button (click)="submitForm()">SIGNUP</button>
+
+</form>

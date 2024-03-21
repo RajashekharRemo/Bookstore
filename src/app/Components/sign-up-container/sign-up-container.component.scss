@@ -1,0 +1,95 @@
+
+label{
+    //border: 2px solid;
+    font-size: 12px;
+    color: #878787;
+}
+
+input[type="text"]{
+    width: 97.5%;
+    height: 25px;
+    border: 2px solid #878787;
+    font-size: large;
+    margin-bottom: 1.3px;
+    border-radius: 2px;
+
+    
+}
+
+input[type="text"]:focus {
+    outline: 2px solid #FF001C;
+    border: none;
+    width: 98.5%;
+    height: 28px;
+  }
+
+
+button{
+    width: 100%;
+    height: 35px;
+    //margin-top: 3px;
+    background: #A03037 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    border: none;
+    font: normal normal normal 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    margin-top: 14px;
+}
+
+
+.mobile{
+    //margin-bottom: 8px !important;
+    position: relative;
+    //bottom: 14px;
+}
+
+span{
+    position: relative;
+    bottom: 5px;
+    //margin-bottom: 3px;
+}
+
+.mat-hint{
+    color: red;
+    font-size: x-small;
+    //height: 10px;
+}
+
+
+.password{
+    width: 99%;
+    height: 27px;
+    border: 2px solid #878787;
+    //font-size: large;
+    //margin-bottom: 8px;
+    border-radius: 2px;
+}
+
+.password input{
+    //position: relative;
+    width: 85.5%;
+    height: 25px;
+    border: none;
+    outline: none;
+    font-size: medium;
+    background-color: rgba(255, 255, 255, 0);
+    //margin-bottom: 8px;
+    //border-radius: 2px;
+    position: relative;
+    bottom: 7px;
+}
+
+
+
+.password mat-icon{
+    // position: absolute;
+    // right: 65px;
+    // bottom: 236px;
+    color: #494747;
+    height: 10px;
+    margin-top: 2px;
+}
+
+

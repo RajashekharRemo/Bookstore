@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div class="container-body">
+        
+        <div class="img-object">
+            <img src="../../assets/cart.png" alt="" srcset="" height="245px" width="245px">
+            <br><br>
+            <p>Online Book Shopping</p>
+        </div>
+        <div class="login-signup-container">
+            <div class="login-signup-row">
+                <ul>
+                    <li><a (click)="goToLogin()" [ngClass]="{'active':login}">LOGIN</a></li>
+                    <li><a (click)="goToSignUp()" [ngClass]="{'active': !login}">SIGNUP</a></li>
+                </ul>
+                <!-- <router-outlet></router-outlet> -->
+                <app-login-container *ngIf="login"></app-login-container>
+                <app-sign-up-container *ngIf="!login"></app-sign-up-container>
+
+            </div>
+        
+        </div>
+    </div>
+</div>
+

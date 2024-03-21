@@ -1,0 +1,100 @@
+
+
+.homeOrBook{
+    width: 66%;
+    margin: 0px auto;
+    margin-top: 5px;
+    height: 40px;
+}
+
+.homeOrBook mat-hint, .homeOrBook span{
+    cursor: pointer;
+
+}
+
+.row{
+    //border: 2px solid;
+    width: 58%;
+    height: 251px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #707070;
+    border-radius: 2px;
+    margin-left: 17%;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.main-cart{
+    width: 92%;
+    height: 201px;
+    //border: 2px solid;
+    margin: 22px auto;
+}
+
+
+.image-content{
+    display: flex;
+}
+
+.content{
+    margin-left: 30px;
+}
+.book-name{
+    font-weight: 500;
+}
+
+.auther-Name{
+    font-size: 12px;
+}
+.line-through{
+    font-size: 11px;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.for-counter{
+    //border: 2px solid;
+    display: inline-flex;
+}
+
+.increase-decrease{
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    border-radius: 50%;
+    padding: 5.7px 12px;
+    // height: 35px;
+    // width: 35px;
+    // padding-bottom: 4px;
+    font-size: larger;
+    color: #726e6e;
+}
+
+.count{
+    //width: 300px;
+    padding: 5px 20px;
+    margin: 2px 6px 0px 6px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #DBDBDB;
+    border-radius: 2px;
+    
+}
+
+.remove{
+    border: none;
+    background-color: white;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.place-order{
+    width: 151px;
+    height: 35px;
+    background: #3371B5 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    border: none;
+    font: normal normal medium 14px/17px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    float: right;
+}

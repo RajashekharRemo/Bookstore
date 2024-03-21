@@ -1,0 +1,52 @@
+
+
+
+.container-card{
+    width: 66%;
+    margin: 5px auto;
+    border: 2px solid;
+    display: grid;
+    grid-template-columns: 16% 59% 25%;
+}
+
+.order-card-row1{
+    width: 140px;
+    height: 175px;
+    //border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.order-card-row2 p{
+    margin-top: 36px;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.order-card-row2 b{
+    font-size: x-large;
+    margin-top: 5px;
+    
+}
+
+.order-card-row2 .actual-price{
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+.order-card-row3 {
+    //border: 2px solid;
+}
+
+.order-card-row3 ul li {
+    //list-style: ;
+    color: green;
+    list-style-type: disc;
+}
+
+.order-card-row3 ul li b{
+    color:  black;
+}

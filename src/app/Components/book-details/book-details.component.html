@@ -1,0 +1,79 @@
+
+<div class="homeOrBook">
+    <mat-hint routerLink="/cards">Home</mat-hint> / <span>Book({{id.id}})</span>
+</div>
+
+<br>
+
+<div class="details" *ngIf="book">
+    <div class="img-buttons">
+        <div class="img">
+            <img [src]="book.image" alt="">
+        </div>
+
+        <div class="btn-add-wishlist">
+            <button class="add-to-bag" *ngIf="accessCount" (click)="accessCountFunction()">ADD TO BAG</button>
+            <div *ngIf="!accessCount" >
+                <button  class="increase-decrease" (click)="decreament()">-</button>
+                <span class="count">{{count}}</span>
+                <button  class="increase-decrease" (click)="increament()">+</button>
+            </div>
+            <button class="wishlist"><mat-icon>favorite</mat-icon> WISHLIST</button>
+        </div>
+
+    </div>
+    <div class="details-content">
+        <div class="details-content-row">
+            <p class="title">{{book.title}}</p>
+            <mat-hint class="auther">by {{book.author}}</mat-hint>
+            <br>
+            <span class="rating">4.5<mat-icon>star</mat-icon></span>
+            <mat-hint>({{book.quantity}})</mat-hint>
+            <br>
+            <br>
+            <span class="price">Rs. {{book.price}}</span> <mat-hint class="actualPrice">Rs. {{book.actualPrice}}</mat-hint> 
+
+        </div>
+        <br>
+
+        <mat-divider></mat-divider>
+
+        <div class="book-details">
+            <ul>
+                <li><mat-hint>Book Details</mat-hint></li>
+                <span *ngIf="book.description.length <= wordLimit">{{book.description}}</span>
+                <span *ngIf="book.description.length > wordLimit && !showmore">
+                    {{book.description.substring(0, wordLimit)}}...
+                    <span class="showML" (click)="showMoreDescription()">show more</span>
+                </span>
+                <span *ngIf="book.description.length > wordLimit && showmore">
+                    {{book.description}}
+                    <span class="showML" (click)="showMoreDescription()">show less</span>
+                </span>
+            </ul>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="feedback-row">
+            <p>Customer Feedback</p>
+            <div class="rating-row">
+                <small>Overall rating</small>
+                <br>
+                <div class="stars">
+                    <ng-container *ngFor="let st of stars">
+                        <mat-icon (click)="updateRating(st)" [ngClass]="{'staractive':st<=presentGivingRating}">star</mat-icon>
+                    </ng-container>
+                </div>
+                <textarea name="" id="textarea" rows="4" placeholder="Write your review"></textarea>
+                <div class="submit"><button>Submit</button></div>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <ng-container *ngFor="let review of ReviewsPrint">
+                <app-reviews [review]="review"></app-reviews>
+            </ng-container>
+        </div>
+
+    </div>
+</div>
+
