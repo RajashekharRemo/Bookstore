@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/Services/data.service';
 import { HttpService } from 'src/app/Services/http.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { HttpService } from 'src/app/Services/http.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private httpservices:HttpService) { }
+  constructor(private httpservices:HttpService, private dataServices:DataService) { }
 
   ngOnInit(): void {
-    this.httpservices.sharedValue$.subscribe((value) => {
+    this.dataServices.sharedValue$.subscribe((value) => {
       // Update your component's view with the new value
       console.log( value.length);
   });

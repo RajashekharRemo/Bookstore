@@ -1,0 +1,19 @@
+<div class="cart-loop">
+    <div class="image-content">
+        <img src="{{book.image}}" alt="" width="65px" height="85px">
+        <div class="content">
+            <span class="book-name">{{book.title}}</span>
+            <br>
+            <mat-hint class="auther-Name">by {{book.author}}</mat-hint><br>
+
+            <b>Rs. {{price}}</b><mat-hint class="line-through">Rs. {{book.actualPrice}}</mat-hint>
+            <br><br>
+            <span class="for-counter">
+                <button class="increase-decrease" (click)="decreament()">-</button>
+                <span class="count">{{count}}</span>
+                <button class="increase-decrease" (click)="increament()">+</button>
+            </span>
+            <button class="remove" (click)="removeItem()">Remove</button>
+        </div>
+    </div>
+</div>

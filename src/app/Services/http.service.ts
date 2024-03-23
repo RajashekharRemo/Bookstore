@@ -12,7 +12,8 @@ export class HttpService {
 
   userURL="https://localhost:7034/api/User/";
   bookUrl="https://localhost:7034/api/Book/";
-  reviewUrl="https://localhost:7034/api/Review/"
+  reviewUrl="https://localhost:7034/api/Review/";
+  cartUrl='https://localhost:7034/api/Cart/';
 
   loginUser(data1:any):Observable<any>{
     return this.http.post( this.userURL+'Login', data1);
@@ -30,12 +31,26 @@ export class HttpService {
     return this.http.get(this.reviewUrl+`GetReviewsByBookId?BookId=${bookid}`);
   }
 
-//==============================================
-  private sharedValueSubject = new BehaviorSubject<any>('');
-  public  sharedValue$ = this.sharedValueSubject.asObservable();
 
-  updateSharedValue(newValue: any) {
-      this.sharedValueSubject.next(newValue);
+  getCartDetails(UId:any):Observable<any>{
+    return this.http.get(this.cartUrl+`UserCartDetailsById?UId=${UId}`)
   }
+
+  addToCart(data:any):Observable<any>{
+    return this.http.post(this.cartUrl+`AddToCart?UId=${localStorage.getItem('id')}`, data);
+  }
+
+  updateCartBookQuantity(data:any):Observable<any>{
+    return this.http.put(this.cartUrl+`UpdateCartBookQuantity?Id=${localStorage.getItem('id')}`, data);
+  }
+
+  removeCartItem(data:any):Observable<any>{
+    return this.http.delete(this.cartUrl+'RemoveCartItem', data);
+  }
+
+  
+
+//==============================================
+  
 
 }

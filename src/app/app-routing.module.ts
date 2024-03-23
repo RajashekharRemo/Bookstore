@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'', component: DashBoardContainerComponent, children:[
     {path:'cards', component:DisplayCardContainerComponent},
     {path:'bookdetails/:id', component:BookDetailsComponent},
-    {path:'cart/:id', component: MycartContainerComponent}
+    {path:'cart', component: MycartContainerComponent}
   ]},
   {
     path:'login-signup', component:LoginSignUpContainerComponent, 

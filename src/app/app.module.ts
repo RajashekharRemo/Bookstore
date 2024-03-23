@@ -44,6 +44,7 @@ import { DataService } from './Services/data.service';
 import { CartComponent } from './Components/cart/cart.component';
 import { MyOrderContainerComponent } from './Components/my-order-container/my-order-container.component';
 import { OrderCardComponent } from './Components/my-order-container/order-card/order-card.component';
+import { CartCartComponent } from './Components/mycart-container/cart-cart/cart-cart.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { OrderCardComponent } from './Components/my-order-container/order-card/o
     ReviewsComponent,
     CartComponent,
     MyOrderContainerComponent,
-    OrderCardComponent
+    OrderCardComponent,
+    CartCartComponent
   ],
   imports: [
     BrowserModule,

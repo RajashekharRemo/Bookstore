@@ -13,17 +13,35 @@
     </div>
 
     <div class="nav-col3">
-        <div class="loginDialog">
+        <div class="WelcomeDialog" *ngIf="openDialog">
+            <b>Welcome</b>
+            <br>
+            <mat-hint>To access account and manage orders</mat-hint>
+            <br><br>
+            <span><a (click)="login()">LOGIN </a>/ <a>SIGNUP</a></span>
+            <br>
+            <mat-divider></mat-divider>
             <ul>
-                <li>Login</li>
-                <li>SignUp</li>
+                <li><span class="material-symbols-outlined">redeem</span><mat-hint>My Orders</mat-hint></li>
+                <li><span class="material-symbols-outlined"> favorite </span><mat-hint>Wishlist</mat-hint></li>
             </ul>
         </div>
+
+        <div class="loginDialog" *ngIf="openList">
+            <b>Hi {{userName}}</b>
+            <ul>
+                <li><span class="material-symbols-outlined">person</span> <mat-hint>Profile</mat-hint></li>
+                <li><span class="material-symbols-outlined">redeem</span><mat-hint>My Orders</mat-hint></li>
+                <li><span class="material-symbols-outlined"> favorite </span><mat-hint>Wishlist</mat-hint></li>
+            </ul>
+            <button (click)="logout()">Logout</button>
+        </div>
+
         <div class="profile-cart">
             <span class="person">
-                <span class="material-symbols-outlined">person</span>
+                <span class="material-symbols-outlined" (click)="callOpenDialog()">person</span>
                     <br>
-                <label for="">Profile</label>
+                <label for="">{{userName}}</label>
             </span>
 
             <span class="cart">
