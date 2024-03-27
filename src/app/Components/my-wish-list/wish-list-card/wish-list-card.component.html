@@ -1,0 +1,16 @@
+<div class="container-card">
+    <div class="wishlist-card-row1" >
+        <img src="{{book.image}}" alt="" width="75px" height="95px" (click)="GoToBookDetails()">
+    </div>
+
+    <div class="wishlist-card-row2" >
+        <p (click)="GoToBookDetails()">{{book.title}}</p>
+        <mat-hint>by {{book.author}}</mat-hint>
+        <br><br>
+        <b>Rs. {{book.price}}</b> <mat-hint class="actual-price">Rs. {{book.actualPrice}}</mat-hint>
+    </div>
+
+    <div class="wishlist-card-row3">
+        <span class="material-symbols-outlined" (click)="deleteWishListItem()">delete</span>
+    </div>
+</div>

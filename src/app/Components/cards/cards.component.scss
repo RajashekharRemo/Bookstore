@@ -7,6 +7,11 @@
     margin-bottom: 30px;
     border: 2px solid #E2E2E2;
     border-radius: 3px;
+    transition-duration: 600ms;
+}
+
+.card-col:hover{
+    box-shadow: rgba(146, 143, 143, 0.273) 2px 2px 6px 6px;
 }
 
 .card-col .book-img{

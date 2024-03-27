@@ -1,0 +1,30 @@
+<div class="main-container">
+    <div class="homeOrProfile">
+        <mat-hint routerLink="/cards">Home</mat-hint> / <span>Profile</span>
+    </div>
+
+    <div class="profile-Container">
+        <div class="profile-header">
+            <span><p>Personal Details</p>
+                <small *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</small>
+                <small *ngIf="isEditMode" (click)="cancelEdit()">Cancel</small></span><button>Save</button>
+        </div>
+        <div class="form-fields">
+            <label>Full Name</label><br>
+            <input type="text" placeholder="Name" [disabled]="!isEditMode">
+        </div>
+        <div class="form-fields">
+            <label>Email Id</label><br>
+            <input type="text" placeholder="Email" [disabled]="!isEditMode">
+        </div>
+        <div class="form-fields">
+            <label>Password</label><br>
+            <input type="text" placeholder="Password" [disabled]="!isEditMode">
+        </div>
+        <div class="form-fields">
+            <label>Mobile Number</label><br>
+            <input type="text" placeholder="Mobile Number" [disabled]="!isEditMode">
+        </div>
+    </div>    
+
+</div>

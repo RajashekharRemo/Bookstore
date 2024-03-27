@@ -1,22 +1,25 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/Services/data.service';
 import { HttpService } from 'src/app/Services/http.service';
 import { LoginSignUpContainerComponent } from '../login-sign-up-container/login-sign-up-container.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private httpservices:HttpService,private dataservices: DataService, private router:Router,private activatedRoute:ActivatedRoute
     , private matDialog:MatDialog) { }
 
 
   userName:any='Profile';
+  subscription!: Subscription;
+
   ngOnInit(): void {
     //debugger;
     this.postDetails();
@@ -30,11 +33,10 @@ export class HeaderComponent implements OnInit {
   postDetails(){
     this.httpservices.getAllBooks().subscribe(resp=>{
       this.dataservices.Books=resp;
-       //console.log(this.dataservices.Books);
-      // console.log("from header");
+       this.dataservices.updateBookList(resp);
     })
 
-    this.dataservices.sharedValue$.subscribe((value) => {
+    this.dataservices.currCartList.subscribe((value) => {
       // Update your component's view with the new value
       //console.log( value.length);
       this.notification=value.length;
@@ -46,33 +48,66 @@ export class HeaderComponent implements OnInit {
 
 
     if(localStorage.getItem('id')){
+      this.openDialog=false;
       this.httpservices.getCartDetails(localStorage.getItem('id')).subscribe(resp=>{
         //console.log(resp);
         for(let i=0; i<resp.data.length;i++){
           this.dataservices.AddToCart.unshift({bookId :resp.data[i].id, quantity:resp.data[i].quantity})
-          this.dataservices.ActualCart.unshift({bookId :resp.data[i].id, quantity:resp.data[i].quantity})
         }
         //console.log(this.dataservices.AddToCart);
         this.notification=this.dataservices.AddToCart.length;
-        this.dataservices.updateSharedValue(this.dataservices.AddToCart);
+        this.dataservices.updateCartList(this.dataservices.AddToCart);
       })
+
+      
+      this.httpservices.getWishList(localStorage.getItem('id')).subscribe(resp=>{
+        for(let i=0; i<resp.data.length;i++){
+          this.dataservices.WishList.unshift({bookId :resp.data[i].id})
+        }
+        this.dataservices.updateWishList(this.dataservices.WishList);
+      })
+
+      // this.httpservices.getAllOrders().subscribe(resp=>{
+      //   this.dataservices.Orders=resp;
+      //   this.dataservices.updateOrdersList(this.dataservices.Orders);
+      // })
+
+
     }
-    
+
+
   }
 
   
 
   goToCart(){
-    // if(this.dataservices.AddToCart.length>0 && this.dataservices.routeBookId){
-    //   //console.log(this.activatedRoute.snapshot.params);
-    //   this.notification=this.dataservices.AddToCart.length;
-    //   this.router.navigate(['/cart']);
-    // }else if(this.dataservices.AddToCart.length>0){
-    //   this.router.navigate(['/cart']);
-    // }
-
     this.router.navigate(['/cart']);
   }
+
+  beforeSignInGotoWishList(){
+    this.openDialog=!this.openDialog
+    this.router.navigate(['/landing_page'])
+  }
+
+  afterLogInGotoWishList(){
+    this.openDialog=false;
+    this.openList=!this.openList;
+    this.router.navigate(['/wishlist']);
+  }
+
+
+  afterLogInGotoOders(){
+    this.openDialog=false;
+    this.openList=!this.openList;
+    this.router.navigate(['/my-orders']);
+  }
+
+  afterLoginGotoProfile(){
+    this.openDialog=false;
+    this.openList=!this.openList;
+    this.router.navigate(['/profile']);
+  }
+
 
   openDialog=false;
   openList=false;
@@ -107,8 +142,17 @@ export class HeaderComponent implements OnInit {
     this.openList=!this.openList;
     this.dataservices.updateNameForHeader('profile');
     this.dataservices.AddToCart=[];
-    this.dataservices.updateSharedValue(this.dataservices.AddToCart);
+    this.dataservices.updateCartList(this.dataservices.AddToCart);
+    this.dataservices.WishList=[];
+    this.dataservices.updateWishList(this.dataservices.WishList);
+    this.dataservices.Orders=[];
+    this.dataservices.updateOrdersList(this.dataservices.Orders);
     this.router.navigateByUrl('/cards');
+  }
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe;
   }
 
 }

@@ -1,15 +1,87 @@
 
-<div class="homeOrBook">
-    <mat-hint routerLink="/cards">Home</mat-hint> / <span>My cart({{cartLength}})</span>
-</div>
+<div class="main-container">
+    <div class="homeOrBook">
+        <mat-hint routerLink="/cards">Home</mat-hint> / <span>My cart({{cartLength}})</span>
+    </div>
 
-<div class="row">
-    <div class="main-cart">
-        <div *ngIf="CartDetails">
-            <ng-container *ngFor="let ad of CartDetails">
-                <app-cart-cart [ArrayData]="ad"></app-cart-cart>
+    <div class="row">
+        <div class="main-cart">
+            <div *ngIf="CartDetails">
+                <ng-container *ngFor="let ad of CartDetails">
+                    <app-cart-cart [ArrayData]="ad"></app-cart-cart>
+                </ng-container> 
+            </div>
+            <button class="place-order" (click)="placeOrder()" *ngIf="showPlaceOrder">PLACE ORDER</button>
+        </div>
+    </div>
+
+
+    <div class="customer-details" *ngIf="!showPlaceOrder">
+        <div class="customer-details-header">
+            <p>Customer Details</p> 
+            <div class="Add-newAddr">
+                <button class="cancel-save" *ngIf="addAddress" (click)="cancelToAddNewAddr()">Cancel</button>
+                <button class="cancel-save" *ngIf="addAddress" (click)="saveTheNewAddr()">Save</button>
+                <button (click)="addNewAddress()">Add New Address</button>
+            </div>
+        </div>
+        <div class="input-fields name-mobile" *ngIf="addAddress">
+            <div >
+                <label for="fullName">Full Name</label><br>
+                <input type="text" name="uName" for="fullName" [(ngModel)]="newAddr.uName">
+            </div>
+            <div>
+                <label for="">Mobile Number</label><br>
+                <input type="text" [(ngModel)]="newAddr.uPhone">
+            </div>
+        </div>
+        <div class="input-fields input-address-fields" *ngIf="addAddress">
+            <label for="">Address</label><br>
+            <textarea name="uAddress" id=""  rows="3" [(ngModel)]="newAddr.uAddress"></textarea>
+        </div>
+        <div class="input-fields city-state-fields" *ngIf="addAddress">
+            <div>
+                <label for="">City/Town</label><br>
+                <input type="text" [(ngModel)]="newAddr.city">
+            </div>
+            <div>
+                <label for="">State</label><br>
+                <input type="text" [(ngModel)]="newAddr.state">
+            </div>
+        </div>
+        <div class="input-fields" *ngIf="addAddress">
+            <div class="type-radios">
+                <label for="">Type</label><br>
+                <span><input type="radio" name="addressType" value="Home" id="" [(ngModel)]="newAddr.addressType">Home</span>
+                <span class="m-2"><input type="radio" name="addressType" value="Work" id="" [(ngModel)]="newAddr.addressType">Work</span>
+                <span class="m-2"><input type="radio" name="addressType" value="Other" id="" [(ngModel)]="newAddr.addressType">Other</span>
+            </div>
+        </div>
+        <div class="address-container">
+            <ng-container *ngFor="let list of AllAddressOfUser;index as i">
+                <app-address [Address]="list" [index]="i" (SelectedAddressEmit)="EmittedAddres($event)"></app-address>
             </ng-container>
         </div>
-        <button class="place-order" (click)="bookOrder()">PLACE ORDER</button>
+        <div class="button-field ">
+            <button (click)="ContinueOrder()" *ngIf="!disableContinueButton">CONTINUE</button>
+        </div>  
     </div>
+
+    <div class="order-address" *ngIf="showPlaceOrder">
+        <p>Address Details</p>
+    </div>
+    <div class="order-summary">
+        <p>Order Summary</p>
+        <div *ngIf="disableContinueButton">
+            <ng-container *ngFor="let ad of CartDetails">
+                <app-check-out [ArrayData]="ad"></app-check-out>
+            </ng-container>
+            <button routerLink="/success-order" (click)="checkout()">CHECKOUT</button>
+        </div>
+    </div>
+
+</div>
+
+<div [class]="forFooterCss?'present':'not-present'">
+    <app-footer></app-footer>
 </div>

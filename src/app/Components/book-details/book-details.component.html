@@ -18,7 +18,8 @@
                 <span class="count">{{count}}</span>
                 <button  class="increase-decrease" (click)="increament()">+</button>
             </div>
-            <button class="wishlist"><mat-icon>favorite</mat-icon> WISHLIST</button>
+            <button class="wishlist" *ngIf="!wishlist" (click)="addToWishList()"><mat-icon>favorite</mat-icon> WISHLIST</button>
+            <button class="addedwishlist" *ngIf="wishlist"><mat-icon>favorite</mat-icon> Added to WISHLIST</button>
         </div>
 
     </div>

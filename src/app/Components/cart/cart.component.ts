@@ -12,8 +12,7 @@ export class CartComponent implements OnInit {
   constructor(private httpservices:HttpService, private dataServices:DataService) { }
 
   ngOnInit(): void {
-    this.dataServices.sharedValue$.subscribe((value) => {
-      // Update your component's view with the new value
+    this.dataServices.currCartList.subscribe((value) => {
       console.log( value.length);
   });
   }

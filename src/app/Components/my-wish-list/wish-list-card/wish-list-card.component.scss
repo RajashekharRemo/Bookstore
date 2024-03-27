@@ -1,0 +1,118 @@
+
+
+
+.container-card{
+    width: 100%;
+    margin: 0px auto;
+    border: 1px solid #E4E4E4;
+    display: grid;
+    grid-template-columns: 160px 590px 250px;
+}
+
+.wishlist-card-row1{
+    width: 140px;
+    height: 175px;
+    //border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wishlist-card-row1 img{
+    cursor: pointer;
+}
+
+
+.wishlist-card-row2 p{
+    margin-top: 36px;
+    font-size: x-large;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.wishlist-card-row2 b{
+    font-size: x-large;
+    margin-top: 5px;
+    
+}
+
+.wishlist-card-row2 .actual-price{
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+// .wishlist-card-row3 {
+//     border: 2px solid;
+// }
+
+.wishlist-card-row3 span{
+    float: right;
+    margin: 20px 10px 0px 0px;
+    color: #9D9D9D;
+}
+
+@media only screen and (min-width:768px) and (max-width:1279px){
+    .container-card{
+        display: grid;
+        grid-template-columns: 160px 59% auto;
+    }
+    .wishlist-card-row3{
+        margin: 30px 17px 0px 0px;
+    }
+}
+@media only screen and (min-width:481px) and (max-width:768px){
+    .container-card{
+        display: grid;
+        grid-template-columns: 200px auto;
+    }
+    .wishlist-card-row1{
+        margin: 0px auto;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    .wishlist-card-row2{
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .wishlist-card-row3{
+        grid-row-start: 1;
+        grid-row-end: 3;
+        height: 20px;
+        position: relative;
+        top: 30px;
+        margin: 0px 17px 0px 0px;
+    }
+
+}
+
+@media only screen and(min-width:1px) and (max-width:480px){
+    .container-card{
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    .wishlist-card-row1{
+        margin: 0px auto;
+        grid-row-start: 2;
+    }
+
+    .wishlist-card-row2{
+        margin-left: 40px;
+        grid-row-start: 3;
+        margin-bottom: 20px;
+    }
+
+    .wishlist-card-row3{
+        grid-row-start: 1;
+        //border: 2px solid;
+        height: 20px;
+        position: relative;
+        top: 30px;
+        margin: 0px 10px 0px 0px;
+    }
+
+} 
+
+
+

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="address-type">
+        <input type="radio" name="workType" (click)="checked()" id="" #radio><p>{{index+1}}. {{Address.addressType}}</p><button *ngIf="!edit" (click)="accessEdit()">Edit</button>
+        <button *ngIf="edit" (click)="cancelChangeAddress()">Cancel</button><!--{{index+1}}. {{Address.addressType}}-->
+        <button *ngIf="edit" (click)="saveChangedAddress()">Save</button>
+    </div>
+    <div class="address-details" *ngIf="!edit">
+        <small class="address-details-header">Address</small><br>
+        <small>{{Address.uAddress}}, {{Address.city}}, {{Address.state}}.</small><!--{{Address.uAddress}}, {{Address.city}}, {{Address.state}}.-->
+    </div>
+    <div class="input-fields input-address-fields" *ngIf="edit">
+        <label for="">Address</label><br>
+        <textarea [(ngModel)]="Address.uAddress" id="" rows="3" ></textarea>
+    </div>
+    <div class="input-fields city-state-fields" *ngIf="edit">
+        <div>
+            <label for="">City/Town</label><br>
+            <input type="text" [(ngModel)]="Address.city">
+        </div>
+        <div>
+            <label for="">State</label><br>
+            <input type="text" [(ngModel)]="Address.state">
+        </div>
+    </div>
+</div>

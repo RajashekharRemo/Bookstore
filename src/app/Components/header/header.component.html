@@ -1,8 +1,8 @@
 <nav class="nav-container">
 
     <div class="nav-col1">
-        <img src="../../assets/BookLogo.png" alt="Book" srcset="" height="24px" width="31px">
-        <p>Bookstore</p>
+        <img src="../../assets/BookLogo.png" alt="Book" srcset="" height="24px" width="31px" routerLink="/cards">
+        <p routerLink="/cards">Bookstore</p>
     </div>
 
     <div class="nav-col2">
@@ -22,17 +22,17 @@
             <br>
             <mat-divider></mat-divider>
             <ul>
-                <li><span class="material-symbols-outlined">redeem</span><mat-hint>My Orders</mat-hint></li>
-                <li><span class="material-symbols-outlined"> favorite </span><mat-hint>Wishlist</mat-hint></li>
+                <li ><span class="material-symbols-outlined">redeem</span><mat-hint>My Orders</mat-hint></li>
+                <li (click)="beforeSignInGotoWishList()"><span class="material-symbols-outlined"> favorite </span><mat-hint>Wishlist</mat-hint></li>
             </ul>
         </div>
 
         <div class="loginDialog" *ngIf="openList">
             <b>Hi {{userName}}</b>
             <ul>
-                <li><span class="material-symbols-outlined">person</span> <mat-hint>Profile</mat-hint></li>
-                <li><span class="material-symbols-outlined">redeem</span><mat-hint>My Orders</mat-hint></li>
-                <li><span class="material-symbols-outlined"> favorite </span><mat-hint>Wishlist</mat-hint></li>
+                <li (click)="afterLoginGotoProfile()"><span class="material-symbols-outlined">person</span> <mat-hint>Profile</mat-hint></li>
+                <li (click)="afterLogInGotoOders()"><span class="material-symbols-outlined">redeem</span><mat-hint>My Orders</mat-hint></li>
+                <li (click)="afterLogInGotoWishList()"><span class="material-symbols-outlined"> favorite </span><mat-hint>Wishlist</mat-hint></li>
             </ul>
             <button (click)="logout()">Logout</button>
         </div>

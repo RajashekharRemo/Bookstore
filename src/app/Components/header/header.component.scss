@@ -31,6 +31,10 @@
     justify-content: flex-end;
 }
 
+.nav-col1 img{
+    cursor: pointer;
+}
+
 .nav-col1 p{
     width: 91px;
     height: 26px;
@@ -42,6 +46,7 @@
     color: #FFFFFF;
     text-transform: capitalize;
     opacity: 1;
+    cursor: pointer;
 }
 
 

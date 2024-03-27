@@ -1,18 +1,18 @@
 <div class="container-card">
     <div class="order-card-row1">
-        <img src="../../../assets/Book2.png" alt="" width="75px" height="95px">
+        <img src="{{Order.image}}" alt="" width="75px" height="95px">
     </div>
 
     <div class="order-card-row2">
-        <p>Dont make me think</p>
-        <mat-hint>by steve kurg</mat-hint>
+        <p>{{Order.title}}</p>
+        <mat-hint>by {{Order.auther}}</mat-hint>
         <br><br>
-        <b>Rs. 1500</b> <mat-hint class="actual-price">Rs. 2000</mat-hint>
+        <b>Rs. {{Order.price}}</b> <mat-hint class="actual-price">Rs. {{Order.actualPrice}}</mat-hint>
     </div>
 
     <div class="order-card-row3">
         <ul>
-            <li><b>order placed on may 12</b></li>
+            <li><b>order placed on {{OrderDate}}</b></li>
         </ul>
     </div>
 </div>

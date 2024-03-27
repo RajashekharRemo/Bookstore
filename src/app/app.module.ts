@@ -25,6 +25,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatBadgeModule} from '@angular/material/badge';
 
 
+
 import { LoginSignUpContainerComponent } from './Components/login-sign-up-container/login-sign-up-container.component';
 import { LoginContainerComponent } from './Components/login-container/login-container.component';
 import { SignUpContainerComponent } from './Components/sign-up-container/sign-up-container.component';
@@ -45,6 +46,12 @@ import { CartComponent } from './Components/cart/cart.component';
 import { MyOrderContainerComponent } from './Components/my-order-container/my-order-container.component';
 import { OrderCardComponent } from './Components/my-order-container/order-card/order-card.component';
 import { CartCartComponent } from './Components/mycart-container/cart-cart/cart-cart.component';
+import { MyWishListComponent } from './Components/my-wish-list/my-wish-list.component';
+import { WishListCardComponent } from './Components/my-wish-list/wish-list-card/wish-list-card.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { AddressComponent } from './Components/mycart-container/address/address.component';
+import { CheckOutComponent } from './Components/mycart-container/check-out/check-out.component';
+import { SuccessOrderComponent } from './Components/success-order/success-order.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +72,13 @@ import { CartCartComponent } from './Components/mycart-container/cart-cart/cart-
     CartComponent,
     MyOrderContainerComponent,
     OrderCardComponent,
-    CartCartComponent
+    CartCartComponent,
+    MyWishListComponent,
+    WishListCardComponent,
+    ProfileComponent,
+    AddressComponent,
+    CheckOutComponent,
+    SuccessOrderComponent
   ],
   imports: [
     BrowserModule,

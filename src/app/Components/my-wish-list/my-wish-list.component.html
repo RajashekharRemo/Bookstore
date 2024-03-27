@@ -1,0 +1,21 @@
+<div class="main-container">
+    <div class="homeOrwishlist">
+        <mat-hint routerLink="/cards">Home</mat-hint> / <span>My WishList</span>
+    </div>
+
+    <div class="wishlist-main-row">
+        <div class="row-1">
+            <p>My Wishlist ({{WishList.length}})</p>
+        </div>
+        <div class="row-2">
+            <ng-container *ngFor="let list of WishList">
+                <app-wish-list-card [Book]="list"></app-wish-list-card>
+            </ng-container>
+        </div>
+    </div>
+
+</div>
+
+<div [class]="forFooterCss?'present':'not-present'">
+    <app-footer></app-footer>
+</div>

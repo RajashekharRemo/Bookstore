@@ -5,11 +5,14 @@
     </div>
 
     <div class="order-row">
-        <app-order-card></app-order-card>
+        <ng-container *ngFor="let list of Orders">
+            <app-order-card [Order]="list"></app-order-card>
+        </ng-container>
     </div>
 
 </div>
-
-
+<div [class]="forFooterCss?'present':'not-present'">
+    <app-footer></app-footer>
+</div>
 
 

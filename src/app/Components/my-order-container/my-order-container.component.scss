@@ -3,6 +3,7 @@
 
 .main-container{
     width: 100%;
+    margin-top: 25px;
 }
 
 .homeOrMyorder{
@@ -10,7 +11,7 @@
     margin: 0px auto;
     margin-top: 15px;
     height: 40px;
-    border: 2px solid;
+    //border: 2px solid;
 
 }
 
@@ -22,3 +23,16 @@
 // .order-row{
 
 // }
+.not-present{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.present{
+    width: 100%;
+    position: relative;
+    top: 100px;
+
+}
+

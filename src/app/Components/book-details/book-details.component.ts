@@ -20,7 +20,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private activatedRoute:ActivatedRoute, private services:BookstoreService, private datasource:DataService, private httpservices:HttpService,
     private matDialog:MatDialog) {
-    //this.id=+activatedRoute.snapshot.params.id;
    
   }
 
@@ -45,16 +44,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   ngOnInit(): void {
     this.id=this.activatedRoute.snapshot.params;
-    //console.log(this.id.id);
-    // this.services.getBookById(this.id.id).subscribe(resp=>{
-    //     //console.log(resp.data);
-        
-    //   this.book=resp.data;
-    // })
 
-
-    this.subscription=this.datasource.currCartList.subscribe((resp:any)=>{
-      this.CartList=resp;
+    this.subscription=this.datasource.bookListAccess.subscribe((resp:any)=>{
       const result= resp.filter((item:any)=>{
         if(item.id==this.id.id){
           return true;
@@ -69,40 +60,20 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
 
 
-    setTimeout(()=>{
-      const result= this.datasource.Books.filter(item=>{
-        if(item.id==this.id.id){
-          return true;
-        }else{
-         return false;
-        }
-      })
-  
-      this.book=result[0];
-  
-      this.services.getReviewsByBookId(this.id.id).subscribe(resp=>{
-        //console.log(resp);
-      
-        this.ReviewsPrint=resp
-      })
-
-
-
-      // console.log(this.datasource.AddToCart.filter(c=>c.bookId==this.id.id));
-      
-
-      // console.log('log from checking');
-      if(this.datasource.AddToCart.find(c=>c.bookId==this.id.id)){
-        
-        let result=this.datasource.AddToCart.find(c=>c.bookId==this.id.id)
-       this.accessCount=false;
-       this.count=result?.quantity;
-     }
-
-    }, 100)
-
+    this.services.getReviewsByBookId(this.id.id).subscribe(resp=>{
+      this.ReviewsPrint=resp
+    })
     
-     
+    let cartIndex= this.datasource.AddToCart.findIndex(e=>e.bookId==this.book.id);
+    if(cartIndex>-1){
+      this.accessCount=false;
+      this.count=this.datasource.AddToCart[cartIndex].quantity;
+    }
+
+    let wishlistIndex= this.datasource.WishList.findIndex(e=>e.bookId==this.book.id);
+    if(wishlistIndex>-1){
+      this.wishlist=true;
+    }
 
   }
 
@@ -114,22 +85,45 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   accessCount=true;
   accessCountFunction(){
     this.accessCount=!this.accessCount;
-    // this.datasource.AddToCart.unshift({ bookId: this.id.id, quantity: this.count })
     // this.datasource.routeBookId=this.id.id;
     
-    // //console.log(this.datasource.AddToCart);
-    // this.newlyAddedtoCart=this.id.id;
-    // this.datasource.updateSharedValue(this.datasource.AddToCart);
+    this.newlyAddedtoCart=this.id.id;
 
-    let obj={
-      bookId:this.book.id,
-      quantity:1,
-    }
+    this.datasource.AddToCart.unshift({bookId:this.book.id, quantity:1})
 
-    this.datasource.updateCartList([...this.CartList, obj])
+    this.datasource.updateCartList(this.datasource.AddToCart)
 
   }
 
+
+  wishlist=false;
+
+  newlyAddedToWishList:number=0
+  addToWishList(){
+    this.wishlist=true
+    
+    let index = -1;
+      // let userId=Number(localStorage.getItem('id'));
+      // this.httpservices.getWishList(userId).subscribe(resp=>{
+      //   index=resp.data.findIndex((e:any)=>e.id==this.newlyAddedToWishList)
+      // }, err=>{
+      //   console.log(err);
+        
+      // })
+
+      index=this.datasource.WishList.findIndex(e=>e.bookId==this.id.id);
+
+      if(index>-1){
+        console.log("already added");
+      }else{
+        this.newlyAddedToWishList=this.id.id;
+      }
+    
+    this.datasource.WishList.unshift({bookId:this.book.id})
+    this.datasource.updateWishList(this.datasource.WishList);
+    //alert('Added to WishList')
+    
+  }
   
   increament(){
     this.count+=1;
@@ -160,18 +154,26 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     
     this.subscription.unsubscribe;
 
-    //console.log(this.datasource.AddToCart);
+
+
+
+
+
+
+
+
+
+
     if(localStorage.getItem('id') && this.newlyAddedtoCart>0){
-      debugger
+    
       const index = this.datasource.AddToCart.findIndex(item => item.bookId == this.newlyAddedtoCart);
-      if(this.datasource.AddToCart[index].quantity>this.count || this.datasource.AddToCart[index].quantity<this.count){
-        this.httpservices.addToCart(this.datasource.AddToCart[index]).subscribe(resp=>{
-          if(resp.result){
-            //alert('added to cart');
-          }
-        })
-      }
-    }else if(this.datasource.AddToCart.find(c=>c.bookId==this.id.id && localStorage.getItem('id'))){
+      this.httpservices.addToCart(this.datasource.AddToCart[index]).subscribe(resp=>{
+        if(resp.result){
+          //alert('added to cart'); 
+        }
+      })
+      //alert('added to cart')
+    }else if(this.datasource.AddToCart.find(c=>c.bookId==this.id.id) && localStorage.getItem('id')){
       const index = this.datasource.AddToCart.findIndex(item => item.bookId == this.id.id);
       if(this.datasource.AddToCart[index].quantity>this.count || this.datasource.AddToCart[index].quantity<this.count){
         this.datasource.AddToCart[index].quantity=this.count;
@@ -192,10 +194,19 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       if(this.datasource.AddToCart[index].quantity>this.count || this.datasource.AddToCart[index].quantity<this.count){
         this.datasource.AddToCart[index].quantity=this.count;
         console.log(this.datasource.AddToCart[index]);
-        this.datasource.updateSharedValue(this.datasource.AddToCart);
+        this.datasource.updateCartList(this.datasource.AddToCart);
   
       }
     }
+
+
+
+    if(localStorage.getItem('id') && this.newlyAddedToWishList>0){
+      this.httpservices.addTowishList({uId:localStorage.getItem('id'), bId:this.newlyAddedToWishList}).subscribe(resp=>{
+        alert('Added to database');
+      })
+    }
+
   }
 
 

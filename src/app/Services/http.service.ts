@@ -14,6 +14,9 @@ export class HttpService {
   bookUrl="https://localhost:7034/api/Book/";
   reviewUrl="https://localhost:7034/api/Review/";
   cartUrl='https://localhost:7034/api/Cart/';
+  wishListUrl='https://localhost:7034/api/WishList/';
+  orderUrl='https://localhost:7034/api/OrderAddress/';
+  addressUrl='https://localhost:7034/api/OrderAddress/';
 
   loginUser(data1:any):Observable<any>{
     return this.http.post( this.userURL+'Login', data1);
@@ -25,6 +28,10 @@ export class HttpService {
 
   getBookById(id:any):Observable<any>{
     return this.http.get(this.bookUrl+`GetBookById?id=${id}`)
+  }
+
+  updateBook(data:any):Observable<any>{
+    return this.http.put(this.bookUrl+'UpdateBook', data);
   }
 
   getReviewsByBookId(bookid:any):Observable<any>{
@@ -45,12 +52,39 @@ export class HttpService {
   }
 
   removeCartItem(data:any):Observable<any>{
-    return this.http.delete(this.cartUrl+'RemoveCartItem', data);
+    return this.http.post(this.cartUrl+'RemoveCartItem', data);
   }
 
-  
+  getWishList(data:any):Observable<any>{
+    return this.http.get(this.wishListUrl+`GetWishListByID?UId=${data}`);
+  }
 
-//==============================================
-  
+  addTowishList(data:any):Observable<any>{
+    return this.http.post(this.wishListUrl+'AddToWishList',data);
+  }
+
+  removeWishListItem(data:any):Observable<any>{
+    return this.http.post(this.wishListUrl+'RemoveWishListItem', data);
+  }
+
+  getAllOrders():Observable<any>{
+    return this.http.get(this.orderUrl+`GetAllOrders?UId=${localStorage.getItem('id')}`);
+  }
+
+  getAllAddress():Observable<any>{
+    return this.http.get(this.addressUrl+`GetAddressById?UId=${localStorage.getItem('id')}`);
+  }
+
+  updateAddress(data:any):Observable<any>{
+    return this.http.put(this.addressUrl+`UpdateUserAddress?UId=${localStorage.getItem('id')}`, data);
+  }
+
+  addNewAdderss(data:any):Observable<any>{
+    return this.http.post(this.addressUrl+`AddUserAddress?UId=${localStorage.getItem('id')}`, data);
+  }
+
+  addOrder(data:any):Observable<any>{
+    return this.http.post(this.addressUrl+`AddOrder?UId=${localStorage.getItem('id')}`, data);
+  }
 
 }

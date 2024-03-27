@@ -38,9 +38,11 @@ export class LoginContainerComponent implements OnInit {
         localStorage.setItem('email', resp.data.email);
         this.dataServices.updateNameForHeader(resp.fullName);
 
+        this.dataServices.updatePlaceOrder(false);
+
         this.httpServices.getCartDetails(resp.data.id).subscribe(cart=>{
 
-          debugger
+          
           for(let j =0; j<this.dataServices.AddToCart.length; j++){
 
             let index=cart.data.findIndex((item:any)=>item.id==this.dataServices.AddToCart[j].bookId);
@@ -54,27 +56,34 @@ export class LoginContainerComponent implements OnInit {
           for(let i = 0; i<cart.data.length; i++){
              arr.push({bookId:cart.data[i].id, quantity:cart.data[i].quantity})
           }
-          
-          // for(let i=0; i<cart.data.length;i++){
-          //   debugger
-          //   // else{
-          //   //   //const index = this.datasource.AddToCart.findIndex(item => item.bookId == this.id.id);
-          //   //   this.dataServices.ActualCart.unshift({bookId :cart.data[i].id, quantity:cart.data[i].quantity})
-          //   //   this.dataServices.AddToCart.push(...this.dataServices.ActualCart)
-              
-              
-          //   // }
-          // }
 
-          debugger
-          this.dataServices.ActualCart=arr;
           this.dataServices.AddToCart=arr;
-          //console.log('after login');
-          //console.log(this.dataServices.AddToCart);
-          this.dataServices.updateSharedValue(this.dataServices.AddToCart);
+          this.dataServices.updateCartList(this.dataServices.AddToCart);
         })
 
-        // get wishlist also and orders 
+        this.httpServices.getWishList(resp.data.id).subscribe(list=>{
+
+          let arr=[];
+          for(let i = 0; i<list.data.length; i++){
+            arr.unshift({bookId:list.data[i].id})
+          }
+
+          // for(let j =0; j<this.dataServices.WishList.length; j++){
+          //   let index=arr.findIndex((item:any)=>item.bookId==this.dataServices.WishList[j].bookId);
+          //   if(index>-1){
+              
+          //   }else{
+          //     arr.unshift({bookId:this.dataServices.WishList[j].bookId});
+          //   }
+          // }
+          
+          
+          this.dataServices.WishList=arr;
+          this.dataServices.updateWishList(this.dataServices.WishList);
+
+        })
+
+
 
       }
       
@@ -82,6 +91,8 @@ export class LoginContainerComponent implements OnInit {
       console.log(err);
       
     })
+
+
   }
 
 

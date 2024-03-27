@@ -18,30 +18,19 @@ export class DisplayCardContainerComponent implements OnInit {
 
   bookcount:number=0;
 
-  page:number=1;
-  count:number=0;
-  booksize:number=12;
-
-
   ngOnInit(): void {
-    debugger
-      setTimeout(()=>{
-          this.BooksPrint=this.dataservice.getBookData();
-          this.bookcount=this.BooksPrint.length;
-      }, 100)
+    
+    this.dataservice.bookListAccess.subscribe(resp=>{
+      this.BooksPrint=resp;
+      this.bookcount=resp.length
+    })
   }
 
 
-
-  // postDetails(){
-  //   this.services.getAllBooks().subscribe(resp=>{
-  //     //console.log(resp);
-  //     this.BooksPrint=resp
-  //     console.log(this.BooksPrint);
-  //     this.bookcount=this.BooksPrint.length;
-  //     this.dataservice.Books=resp;
-  //   })
-  // }
+  
+  page:number=1;
+  count:number=0;
+  booksize:number=12;
 
   onTableDataChange(event:any){
     this.page=event;

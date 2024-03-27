@@ -11,20 +11,27 @@ import { DisplayCardContainerComponent } from './Components/display-card-contain
 import { BookDetailsComponent } from './Components/book-details/book-details.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { MyOrderContainerComponent } from './Components/my-order-container/my-order-container.component';
+import { MyWishListComponent } from './Components/my-wish-list/my-wish-list.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { SuccessOrderComponent } from './Components/success-order/success-order.component';
 
 const routes: Routes = [
-  {path:'landing_page', component: LandingPageComponent},
   {path:'', component: DashBoardContainerComponent, children:[
     {path:'cards', component:DisplayCardContainerComponent},
     {path:'bookdetails/:id', component:BookDetailsComponent},
-    {path:'cart', component: MycartContainerComponent}
+    {path:'cart', component: MycartContainerComponent},
+    {path:'landing_page', component: LandingPageComponent},
+    {path:'wishlist', component: MyWishListComponent},
+    {path:'my-orders', component: MyOrderContainerComponent},
+    {path:'profile', component:ProfileComponent},
+    {path:'success-order', component:SuccessOrderComponent}
   ]},
   {
     path:'login-signup', component:LoginSignUpContainerComponent, 
   children:[{path:'login', component:LoginContainerComponent},{path:'signup', component:SignUpContainerComponent}]
   },
   {path:'reset_password', component: ResetPasswordComponent},
-  {path:'my-orders', component: MyOrderContainerComponent},
+  
   
 
 ];

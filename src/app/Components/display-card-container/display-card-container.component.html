@@ -3,12 +3,15 @@
         <h1>Books</h1><mat-hint>({{bookcount}}) items</mat-hint>
     </div>
     <div class="book-count-col2">
-        <select name="" id="basedOnPrice">
-            <option value="">Sort by relevance</option>
-            <option value="">Price : Low to High</option>
-            <option value="">Price : High to Low</option>
-            <option value="">Newest Arraivals</option>
-        </select>
+        
+
+        <button mat-button [matMenuTriggerFor]="menu">Sort by relevance <mat-icon>expand_more</mat-icon></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Price : Low to High</button>
+            <button mat-menu-item>Price : High to Low</button>
+            <button mat-menu-item>Newest Arraivals</button>
+        </mat-menu>
+
     </div>
 </div>
 
@@ -24,3 +27,5 @@
 <div class="prev-next">
     <pagination-controls previousLabel="" nextLabel="" (pageChange)="onTableDataChange($event)"></pagination-controls>
 </div>
+
+<app-footer></app-footer>

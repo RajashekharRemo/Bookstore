@@ -1,0 +1,58 @@
+
+
+.main-container{
+    width: 100%;
+    margin-top: 25px;
+}
+
+.homeOrwishlist{
+    width: 66%;
+    margin: 0px auto;
+    margin-top: 15px;
+    height: 40px;
+    //border: 2px solid;
+
+}
+
+.homeOrwishlist mat-hint, .homeOrwishlist span{
+    cursor: pointer;
+
+}
+
+.wishlist-main-row{
+    width: 66%;
+    margin: 0px auto;
+}
+
+.wishlist-main-row .row-1{
+    width: 100%;
+    height: 55px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border: 2px solid #E4E4E4;
+    display: flex;
+    align-items: center;
+
+}
+
+.wishlist-main-row .row-1 p{
+    margin: 3px 0px 0px 30px;
+    //border: 2px solid;
+    font: normal normal medium 26px/24px Roboto;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #0A0102;
+}
+
+.not-present{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.present{
+    width: 100%;
+    position: relative;
+    top: 100px;
+
+}
+

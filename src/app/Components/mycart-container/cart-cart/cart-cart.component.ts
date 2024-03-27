@@ -47,7 +47,6 @@ export class CartCartComponent implements OnInit {
     this.price=this.book.price*this.ArrayData.quantity;
     this.count=this.ArrayData.quantity;
 
-     //console.log(this.datasource.AddToCart);
      
   }
 
@@ -69,31 +68,13 @@ export class CartCartComponent implements OnInit {
   @Input() ArrayData:any;
 
 
-  // bookOrder(){
-  //   if(localStorage.getItem('token')){
-
-
-  //   }else{
-  //     console.log("token not found");
-  //     const dialogRef=this.matDialog.open(LoginSignUpContainerComponent, {width:'740px',height:'475px'});
-  //     dialogRef.afterClosed().subscribe(resp => {
-  //       console.log('The dialog was closed');
-  //     })
-      
-  //   }
-
-  // }
-
 
   removeItem(){
-    debugger
-    // let index=this.datasource.AddToCart.findIndex(e=>e.bookId==this.book.id);
-    // this.datasource.AddToCart.slice(index, 1);
-
 
     if(localStorage.getItem('token')){
-      let index= this.datasource.AddToCart.findIndex(e=>e.bookId==this.book.id);
-      this.httpServices.removeCartItem({uId:localStorage.getItem('id'), bookId:this.book.id}).subscribe(resp=>{
+      let id= localStorage.getItem('id')
+
+      this.httpServices.removeCartItem({uId:Number(id), bookId:this.book.id}).subscribe(resp=>{
         this.datasource.AddToCart=this.datasource.AddToCart.filter(e=> {
           if(e.bookId!=this.book.id){
             return true;
@@ -101,6 +82,7 @@ export class CartCartComponent implements OnInit {
             return false;
           }
         });
+        this.datasource.updateCartList(this.datasource.AddToCart);
       })
     }else{
       this.datasource.AddToCart=this.datasource.AddToCart.filter(e=> {
@@ -113,7 +95,7 @@ export class CartCartComponent implements OnInit {
     }
 
 
-    this.datasource.updateSharedValue(this.datasource.AddToCart)
+    this.datasource.updateCartList(this.datasource.AddToCart)
   }
 
 }
