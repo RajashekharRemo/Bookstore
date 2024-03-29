@@ -27,6 +27,8 @@ export class LoginContainerComponent implements OnInit {
   }
 
   login(){
+    //console.log(this.dataServices.AddToCart);
+    
     debugger;
     this.services.loginUser(this.loginObj).subscribe(resp=>{
       //console.log(resp);
@@ -36,22 +38,30 @@ export class LoginContainerComponent implements OnInit {
         localStorage.setItem('id', resp.data.id);
         localStorage.setItem('fullName',resp.data.fullName);
         localStorage.setItem('email', resp.data.email);
-        this.dataServices.updateNameForHeader(resp.fullName);
+        this.dataServices.updateNameForHeader(resp.data.fullName);
 
         this.dataServices.updatePlaceOrder(false);
 
         this.httpServices.getCartDetails(resp.data.id).subscribe(cart=>{
 
-          
           for(let j =0; j<this.dataServices.AddToCart.length; j++){
 
             let index=cart.data.findIndex((item:any)=>item.id==this.dataServices.AddToCart[j].bookId);
             if(index>-1){
-              cart.data[index].quantity=this.dataServices.AddToCart[j].quantity;
+              cart.data[index].quantity=this.dataServices.AddToCart[j].quantity+cart.data[index].quantity;;
+              this.httpServices.updateCartBookQuantity({bookId:cart.data[index].id, quantity:cart.data[index].quantity}).subscribe(og=>{
+                console.log('updated');
+              })
             }else{
-              cart.data.push(this.dataServices.AddToCart[j]);
+              cart.data.push({id:this.dataServices.AddToCart[j].bookId, quantity:this.dataServices.AddToCart[j].quantity});
+              this.httpServices.addToCart({bookId:this.dataServices.AddToCart[j].bookId, quantity:this.dataServices.AddToCart[j].quantity}).subscribe(og=>{
+                console.log(og);
+                
+              })
             }
           }
+          //console.log(cart.data);
+          
           let arr=[];
           for(let i = 0; i<cart.data.length; i++){
              arr.push({bookId:cart.data[i].id, quantity:cart.data[i].quantity})
@@ -62,22 +72,21 @@ export class LoginContainerComponent implements OnInit {
         })
 
         this.httpServices.getWishList(resp.data.id).subscribe(list=>{
-
           let arr=[];
           for(let i = 0; i<list.data.length; i++){
             arr.unshift({bookId:list.data[i].id})
           }
 
-          // for(let j =0; j<this.dataServices.WishList.length; j++){
-          //   let index=arr.findIndex((item:any)=>item.bookId==this.dataServices.WishList[j].bookId);
-          //   if(index>-1){
-              
-          //   }else{
-          //     arr.unshift({bookId:this.dataServices.WishList[j].bookId});
-          //   }
-          // }
-          
-          
+          for(let j =0; j<this.dataServices.WishList.length; j++){
+            let index=arr.findIndex((item:any)=>item.bookId==this.dataServices.WishList[j].bookId);
+            if(index>-1){
+            }else{
+              arr.unshift({bookId:this.dataServices.WishList[j].bookId});
+              this.httpServices.addTowishList({uId:localStorage.getItem('id'), bId:this.dataServices.WishList[j].bookId}).subscribe(og=>{
+                //console.log('wishList Added');
+              })
+            }
+          }
           this.dataServices.WishList=arr;
           this.dataServices.updateWishList(this.dataServices.WishList);
 

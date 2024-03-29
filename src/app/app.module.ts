@@ -52,6 +52,8 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { AddressComponent } from './Components/mycart-container/address/address.component';
 import { CheckOutComponent } from './Components/mycart-container/check-out/check-out.component';
 import { SuccessOrderComponent } from './Components/success-order/success-order.component';
+import { AddressProfileComponent } from './Components/profile/address-profile/address-profile.component';
+import { SearchBookPipe } from './Pipes/search-book.pipe';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { SuccessOrderComponent } from './Components/success-order/success-order.
     ProfileComponent,
     AddressComponent,
     CheckOutComponent,
-    SuccessOrderComponent
+    SuccessOrderComponent,
+    AddressProfileComponent,
+    SearchBookPipe
   ],
   imports: [
     BrowserModule,

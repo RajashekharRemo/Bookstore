@@ -18,14 +18,16 @@
 <br>
 
 <div class="card-container" >
-    <ng-container *ngFor="let book of BooksPrint | paginate:{itemsPerPage:booksize, currentPage:page, totalItems:count}">
-        <app-cards [Book]="book">
-
-        </app-cards>
+    <ng-container *ngFor="let book of BooksPrint | searchBook:searchString | paginate:{itemsPerPage:booksize, currentPage:page, totalItems:count}">
+        <app-cards [Book]="book"></app-cards>
     </ng-container>
 </div>
 <div class="prev-next">
     <pagination-controls previousLabel="" nextLabel="" (pageChange)="onTableDataChange($event)"></pagination-controls>
 </div>
 
-<app-footer></app-footer>
+<div class="for-mb-2">
+
+</div>
+
+<!-- <app-footer></app-footer> -->

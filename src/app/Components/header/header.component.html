@@ -8,7 +8,7 @@
     <div class="nav-col2">
         <div class="search-row">
             <mat-icon>search</mat-icon>
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search" id="edho" [(ngModel)]="searchString" (input)="passSearchString()">
         </div>
     </div>
 
@@ -41,13 +41,13 @@
             <span class="person">
                 <span class="material-symbols-outlined" (click)="callOpenDialog()">person</span>
                     <br>
-                <label for="">{{userName}}</label>
+                <label  (click)="callOpenDialog()">{{userName}}</label>
             </span>
 
             <span class="cart">
                 <span class="material-symbols-outlined" matBadge="{{notification}}" (click)="goToCart()">shopping_cart</span>
                     <br>
-                <label for="">Cart</label>
+                <label>Cart</label>
             </span>
         </div>
     </div>

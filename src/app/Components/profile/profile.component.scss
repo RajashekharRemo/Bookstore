@@ -22,6 +22,7 @@
     width: 35%;
     //border: 2px solid;
     margin-left: 20%;
+    margin-bottom: 40px;
 }
 
 .profile-header{
@@ -78,17 +79,52 @@
 }
 
 
+.adddress-details{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.adddress-details p{
+    font-weight: 600;
+    font-size: large;
+}
+
+.adddress-details button{
+    width: 150px;
+    cursor: pointer;
+    border: 1px solid #A03037;
+    border-radius: 2px;
+    color: #A03037;
+    background-color: white;
+}
+
+// .address-loop{
+//     border: 2px solid;
+// }
+
+
+
+
 @media only screen and (min-width:768px) and (max-width:1279px){
     .profile-Container{
         width: 49%;
         //border: 2px solid;
+        
     }
 }
 
 @media only screen and (min-width:481px) and (max-width:768px){
+    
+    .homeOrProfile{
+        width: 72%;
+        margin: 0px auto;
+
+    }
     .profile-Container{
-        width: 55%;
+        width: 62%;
         //border: 2px solid;
+        margin-left: 17%;
     }
 
     .form-fields input{

@@ -1,7 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { BookstoreService } from '../../Bookstore/bookstore.service';
 import { Book } from '../../Model/bookstore.model';
-import { StoreListService } from '../../Bookstore/store-list.service';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -24,9 +22,13 @@ export class DisplayCardContainerComponent implements OnInit {
       this.BooksPrint=resp;
       this.bookcount=resp.length
     })
+
+    this.dataservice.searchBookAccess.subscribe(resp=>{
+      this.searchString=resp
+    })
   }
 
-
+  searchString='';
   
   page:number=1;
   count:number=0;

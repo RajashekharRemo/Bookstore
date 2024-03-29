@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/Services/data.service';
 
 @Component({
   selector: 'app-success-order',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessOrderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.dataService.orderedNumberAccess.subscribe(resp=>{
+      this.OrderNum=resp;
+    })
   }
+
+  OrderNum='';
 
 }

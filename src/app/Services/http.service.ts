@@ -22,6 +22,14 @@ export class HttpService {
     return this.http.post( this.userURL+'Login', data1);
   }
 
+  getUser():Observable<any>{
+    return this.http.get(this.userURL+`GetUserById?UId=${localStorage.getItem('id')}`);
+  }
+
+  updateUser(data:any):Observable<any>{
+    return this.http.put(this.userURL+`Update?Id=${localStorage.getItem('id')}`, data)
+  }
+
   getAllBooks():Observable<Book[]>{
     return this.http.get<Book[]>(this.bookUrl+'GetAllBooks');
   }
@@ -36,6 +44,14 @@ export class HttpService {
 
   getReviewsByBookId(bookid:any):Observable<any>{
     return this.http.get(this.reviewUrl+`GetReviewsByBookId?BookId=${bookid}`);
+  }
+
+  getAllReviews():Observable<any>{
+    return this.http.get(this.reviewUrl+'GetAllReviews');
+  }
+
+  addReview(data:any):Observable<any>{
+    return this.http.post(this.reviewUrl+'AddReview', data);
   }
 
 

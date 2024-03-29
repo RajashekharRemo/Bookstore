@@ -64,8 +64,8 @@
                         <mat-icon (click)="updateRating(st)" [ngClass]="{'staractive':st<=presentGivingRating}">star</mat-icon>
                     </ng-container>
                 </div>
-                <textarea name="" id="textarea" rows="4" placeholder="Write your review"></textarea>
-                <div class="submit"><button>Submit</button></div>
+                <textarea name="" id="textarea" rows="4" placeholder="Write your review" [(ngModel)]="reviewObj.bReview"></textarea>
+                <div class="submit" (click)="giveReview()"><button>Submit</button></div>
             </div>
         </div>
 

@@ -13,10 +13,7 @@ export class CardsComponent implements OnInit {
 
   @Input() Book:any;
 
-  ngOnInit(): void {
-    //console.log(this.Book);
-    
-  }
+  ngOnInit(): void {}
 
   goToBookDetails(){
     this.router.navigate(['/bookdetails', this.Book.id])

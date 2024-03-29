@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   userName:any='Profile';
+  searchString='';
   subscription!: Subscription;
 
   ngOnInit(): void {
@@ -26,6 +27,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if(localStorage.getItem('token')){
       this.userName=localStorage.getItem('fullName')
     }
+
+    
   }
 
   notification:number=0;
@@ -72,6 +75,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       //   this.dataservices.updateOrdersList(this.dataservices.Orders);
       // })
 
+      this.httpservices.getAllAddress().subscribe(resp=>{
+        this.dataservices.Address=resp;
+        this.dataservices.updateAddressList(this.dataservices.Address);
+      })
 
     }
 
@@ -114,7 +121,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   callOpenDialog(){
     if(localStorage.getItem('token')){
       this.openList=!this.openList;
-
     }else{
       this.openDialog=!this.openDialog
     }
@@ -125,10 +131,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   login(){
     const dialogRef=this.matDialog.open(LoginSignUpContainerComponent, {width:'740px',height:'475px'});
       dialogRef.afterClosed().subscribe(resp => {
-        console.log('The dialog was closed . if name problem come check here');
-        // if(localStorage.getItem('fullName')){
-        //   this.userName=localStorage.getItem('fullName')
-        // }
+        //console.log('The dialog was closed . if name problem come check here');
       })
       this.openDialog=!this.openDialog
   }
@@ -150,6 +153,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/cards');
   }
 
+
+  passSearchString(){
+    //console.log(this.searchString +'search string');
+    this.dataservices.updateSearchBook(this.searchString);
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe;

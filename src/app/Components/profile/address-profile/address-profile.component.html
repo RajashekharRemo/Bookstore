@@ -1,0 +1,27 @@
+
+<div class="container">
+    <div class="address-type">
+        <p>{{index+1}}. {{Address.addressType}}</p><button *ngIf="!edit" (click)="accessEdit()">Edit</button>
+        <button *ngIf="edit" (click)="cancelChangeAddress()">Cancel</button><!--{{index+1}}. {{Address.addressType}}-->
+        <button *ngIf="edit" (click)="saveChangedAddress()">Save</button>
+    </div>
+    <div class="input-fields input-address-fields" >
+        <label for="">Address</label><br>
+        <textarea [(ngModel)]="Address.uAddress" id="" rows="3" [class]="edit?'undisabled':'disableMode'" [disabled]="!edit"></textarea>
+    </div>
+    <div class="input-fields city-state-fields" >
+        <div>
+            <label for="">City/Town</label><br>
+            <input type="text" [(ngModel)]="Address.city" [class]="edit?'undisabled':'disableMode'" [disabled]="!edit">
+        </div>
+        <div>
+            <label for="">State</label><br>
+            <input type="text" [(ngModel)]="Address.state" [class]="edit?'undisabled':'disableMode'" [disabled]="!edit">
+        </div>
+    </div>
+    <div class="input-fields ChangeType">
+        <span><input type="radio" name="ChangeType" id="ChangeType" #ChangeType value="Home" >Home</span>
+        <span class="ChangeType-m2"><input type="radio" name="ChangeType" id="ChangeType" #ChangeType value="Work">Work</span>
+        <span class="ChangeType-m2"><input type="radio" name="ChangeType" id="ChangeType" #ChangeType value="Other">Other</span>
+    </div>
+</div>

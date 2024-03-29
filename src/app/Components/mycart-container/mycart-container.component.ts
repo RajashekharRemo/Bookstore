@@ -49,12 +49,9 @@ export class MycartContainerComponent implements OnInit{
   placeOrder(){
     if(localStorage.getItem('token')){
       this.showPlaceOrder=false;
-      this.httpServices.getAllAddress().subscribe(resp=>{
-        this.dataservice.Address=resp;
-        this.dataservice.updateAddressList(this.dataservice.Address);
-        this.dataservice.AddressListAccess.subscribe(data=>{
-          this.AllAddressOfUser=data;
-        })
+      
+      this.dataservice.AddressListAccess.subscribe(data=>{
+        this.AllAddressOfUser=data;
       })
       this.forFooterCss=true;
     }else{
@@ -145,6 +142,7 @@ export class MycartContainerComponent implements OnInit{
             this.httpServices.addOrder(this.OrderObj).subscribe(resp=>{
               if(resp.result){
                 //alert('ordered successfully');
+                this.dataservice.updateOrderNum(resp.id);
               }
             })
           }else{

@@ -60,8 +60,23 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
 
 
-    this.services.getReviewsByBookId(this.id.id).subscribe(resp=>{
-      this.ReviewsPrint=resp
+    // this.services.getReviewsByBookId(this.id.id).subscribe(resp=>{
+    //   this.ReviewsPrint=resp
+    // })
+
+    this.httpservices.getAllReviews().subscribe(resp=>{
+      this.datasource.Reviews=resp.data
+      this.datasource.updateReview(resp.data);
+    })
+
+    this.datasource.reviewAccess.subscribe(resp=>{
+      this.ReviewsPrint=resp.filter((e:any)=>{
+        if(e.bookId==this.id.id){
+          return true;
+        }else{
+          return false;
+        }
+      })
     })
     
     let cartIndex= this.datasource.AddToCart.findIndex(e=>e.bookId==this.book.id);
@@ -149,19 +164,48 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.presentGivingRating=num;
   }
 
+  reviewObj={
+    bReview:'',
+    stars:'',
+    uId:'',
+    bId:''
+  }
+
+  newlyAddedReview={
+    review:'',
+    fullName:'',
+    stars:0,
+    bookId:0
+  }
+
+  giveReview(){
+    if(localStorage.getItem('token')){
+      this.reviewObj.bId=this.id.id;
+      this.reviewObj.uId=""+localStorage.getItem('id');
+      this.reviewObj.stars=''+this.presentGivingRating;
+
+      //console.log(this.reviewObj);
+      this.httpservices.addReview(this.reviewObj).subscribe(resp=>{
+        this.newlyAddedReview.bookId=this.id.id;
+        this.newlyAddedReview.review=this.reviewObj.bReview;
+        this.newlyAddedReview.stars=this.presentGivingRating;
+        this.newlyAddedReview.fullName=''+localStorage.getItem('fullName');
+        this.datasource.Reviews.unshift(this.newlyAddedReview);
+        this.datasource.updateReview(this.datasource.Reviews);
+
+        this.presentGivingRating=0;
+        this.reviewObj.bReview='';
+        //alert('Review added successfylly');
+      })
+      
+    }else{
+      alert('Please Login to Give Review..')
+    }
+  }
 
   ngOnDestroy(): void {
     
     this.subscription.unsubscribe;
-
-
-
-
-
-
-
-
-
 
 
     if(localStorage.getItem('id') && this.newlyAddedtoCart>0){
@@ -208,6 +252,5 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     }
 
   }
-
 
 }

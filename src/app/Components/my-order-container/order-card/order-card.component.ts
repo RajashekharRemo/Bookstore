@@ -18,6 +18,6 @@ export class OrderCardComponent implements OnInit {
 
   @Input() Order:any;
   OrderDate='';
-  OrderMonths=['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec']
+  OrderMonths=['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'];
 
 }

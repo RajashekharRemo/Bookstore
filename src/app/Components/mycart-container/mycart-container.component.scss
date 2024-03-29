@@ -206,6 +206,7 @@
     border-radius: 2px;
     margin: 0px auto;
     margin-bottom: 15px;
+    
 }
 
 .order-summary p{
@@ -247,4 +248,104 @@
     width: 100%;
     position: relative;
     top: 100px;
+}
+
+@media only screen and (min-width:481px) and (max-width:768px){
+    
+    .input-fields{
+        margin-left: 6%;
+        width: 82%;
+       
+    }
+    .customer-details{
+        width: 68%;
+        margin-left: 17%;
+    }
+    .order-address{
+        width: 68%;
+        margin-left: 17%;
+    }
+
+    .order-summary{
+        width: 68%;
+        margin-left: 17%;
+    }
+
+    .input-address-fields textarea{
+        width: 96%;
+    }
+
+    .city-state-fields div input{
+        width: 93%;
+    }
+
+    .type-radios .m-2{
+        margin-left: 60px;
+    }
+}
+
+
+@media only screen and (min-width:2px) and (max-width:480px){
+    .homeOrBook{
+        width: 73%;
+        margin: 0px auto;
+        height: 32px;
+    }
+
+    .customer-details{
+        width: 72%;
+        margin-left: 17%;
+    }
+
+    .order-address{
+        width: 72%;
+        margin-left: 17%;
+    }
+
+    .order-summary{
+        width: 72%;
+        margin-left: 17%;
+    }
+
+    .name-mobile{
+        display: block;
+    }
+    .name-mobile div{
+        width: 100%;
+        margin-left: 6%;
+    }
+    .name-mobile div input{
+        width: 100%;
+    }
+    .input-address-fields{
+        margin-left: 10%;
+    }
+    .input-address-fields textarea{
+        width: 100%;
+    }
+
+    .city-state-fields{
+        display: block;
+        margin-left: 10%;
+    }
+
+    .city-state-fields div input{
+        width: 100%;
+    }
+
+    .type-radios{
+        margin-left: 7%;
+    }
+    .type-radios .m-2{
+        margin-left: 20px;
+    }
+
+    .order-summary{
+        padding-bottom: 70px;
+    }
+
+    .order-summary div button{
+        position: relative;
+        top: 20px;
+    }
 }

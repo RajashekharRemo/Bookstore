@@ -87,4 +87,26 @@ export class DataService {
     this.AddressList.next(newVAlue);
   }
 
+  private searchBook=new BehaviorSubject<string>('');
+  searchBookAccess=this.searchBook.asObservable(); 
+
+  updateSearchBook(newVAlue:string){
+    this.searchBook.next(newVAlue);
+  }
+
+  private orderedNumber=new BehaviorSubject<any>('');
+  orderedNumberAccess=this.orderedNumber.asObservable();
+
+  updateOrderNum(newVAlue:any){
+    this.orderedNumber.next(newVAlue);
+  }
+
+
+  private Review=new BehaviorSubject<any>([]);
+  reviewAccess=this.Review.asObservable();
+
+  updateReview(newValue:any){
+    this.Review.next(newValue) 
+  }
+
 }

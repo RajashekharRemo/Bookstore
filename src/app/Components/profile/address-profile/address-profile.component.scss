@@ -1,8 +1,8 @@
 
 
 .container{
-    width: 71%;
-    margin-left: 4%;
+    width: 100%;
+    //margin-left: 4%;
     //border: 2px solid;
     margin-top: 15px;
     margin-bottom: 7px;
@@ -31,7 +31,7 @@
 
 
 .address-details{
-    margin-left: 26px;
+    margin-left: 5px;
 }
 
 .address-details span{
@@ -43,7 +43,7 @@
 }
 
 .input-fields{
-    margin-left: 26px;
+    margin-left: 5px;
     width: 100%;
 }
 
@@ -56,7 +56,7 @@
 
 .input-address-fields textarea{
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
+    border: 2px solid #DCDCDC;
     opacity: 1;
     width: 96%;
     resize: none;
@@ -84,43 +84,38 @@
 .city-state-fields div input{
     height: 45px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
+    border: 2px solid #DCDCDC;
     opacity: 1;
     width: 92%;
     padding-left: 7px;
 }
 
 
-@media only screen and (min-width:481px) and (max-width:768px){
-    .input-address-fields textarea{
-        width: 106%;
-    }
-
-    .city-state-fields .ml-2{
-        margin-right: 10px !important;
-        padding-right: 10px !important;
-    }
-
-    .city-state-fields div input{
-        width: 112%;
-    }
-
+.disableMode{
+    //background: #F5F5F5 0% 0% no-repeat padding-box;
+    background-color: #F5F5F5 !important;
 }
 
+.ChangeType{
+    margin-top: 15px;
+}
 
-@media only screen and (min-width:0px) and (max-width:480px){
+.ChangeType span input{
+    margin: 0px 6px 0px 0px;
+    position: relative;
+    top: 1px;
+}
+
+.ChangeType-m2{
+    margin-left: 16%;
+}
+
+@media only screen and (min-width:2px) and (max-width:480px){
     .city-state-fields{
         display: block;
     }
-    .city-state-fields div input{
-        width: 96%;
-    }
     .input-address-fields textarea{
-        width: 96%;
+        width: 92%;
     }
 
-    .container{
-        //width: 71%;
-        margin-left: 9%;
-    }
 }

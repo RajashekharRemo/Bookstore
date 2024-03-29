@@ -124,6 +124,7 @@
     letter-spacing: 0.45px;
     color: #FFFFFF;
     opacity: 1;
+    cursor: pointer;
 }
 
 
@@ -304,6 +305,11 @@
     margin-bottom: 4px;
 }
 
+@media only screen and (min-width:769px) and (max-width:1268px){
+    .WelcomeDialog{
+        right: 20px;
+    }
+}
 
 
 @media only screen and (min-width:481px) and (max-width:768px){
@@ -325,6 +331,13 @@
     }
     .nav-col1 p{
         margin: 5px 15px 0px 5px ;
+    }
+
+    .loginDialog{
+        right: 20px;
+    }
+    .WelcomeDialog{
+        right: 20px;
     }
 }
 
@@ -349,6 +362,13 @@
 
     .nav-container{
         grid-template-columns: 35% 41% 24%;
+    }
+
+    .loginDialog{
+        right: 20px;
+    }
+    .WelcomeDialog{
+        right: 20px;
     }
 
 }
