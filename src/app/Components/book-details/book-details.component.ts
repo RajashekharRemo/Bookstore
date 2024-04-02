@@ -159,8 +159,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   alreadyGivenRating:number=0;
   presentGivingRating:number=0;
 
-  updateRating(num:number){
-    
+  updateRating(num:number){ 
     this.presentGivingRating=num;
   }
 

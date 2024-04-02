@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpService } from 'src/app/Services/http.service';
 
 @Component({
   selector: 'app-sign-up-container',
@@ -25,7 +26,7 @@ export class SignUpContainerComponent implements OnInit {
   }
 
   //userForm:FormGroup;
-  constructor(){
+  constructor(private httpservices:HttpService){
     // this.userForm=new FormGroup({
     //   fullName:new FormControl('', [Validators.required, Validators.maxLength(3)]),
     //   email:new FormControl('', [Validators.required, Validators.maxLength(8), Validators.email]),
@@ -38,8 +39,15 @@ export class SignUpContainerComponent implements OnInit {
   }
 
   submitForm(){
-    console.log(this.userObj);
-    
+    //console.log(this.userObj);
+    this.httpservices.createUser(this.userObj).subscribe(resp=>{
+      //console.log(resp);
+      alert('Created Successfylly, Please Login..')
+      this.userObj.email='';
+      this.userObj.fullName='';
+      this.userObj.password='';
+      this.userObj.phone='';
+    })
   }
 
 }

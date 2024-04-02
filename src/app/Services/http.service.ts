@@ -22,6 +22,10 @@ export class HttpService {
     return this.http.post( this.userURL+'Login', data1);
   }
 
+  createUser(data:any):Observable<any>{
+    return this.http.post(this.userURL+'CreateUser', data)
+  }
+
   getUser():Observable<any>{
     return this.http.get(this.userURL+`GetUserById?UId=${localStorage.getItem('id')}`);
   }
