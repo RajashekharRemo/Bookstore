@@ -1,8 +1,10 @@
 <form action="">
     <label>Email Id</label><br>
-    <input type="text"  name="email" [(ngModel)]="loginObj.email" #email="ngModel" minlength="8" required pattern="[A-Za-z0-9!#$%&*'_\-]+@[A-Za-z0-9_]+\.[a-z]{2,3}$">
-    <span  *ngIf="email.invalid && (email.touched || email.dirty)">
-        <mat-hint *ngIf="email.errors?.['required']">This is Required</mat-hint><!--[class]="!email.touched?'email-m1':'email-m2'"-->
+    <input type="text" name="email" [(ngModel)]="loginObj.email" #email="ngModel" minlength="8" required
+        pattern="[A-Za-z0-9!#$%&*'_\-]+@[A-Za-z0-9_]+\.[a-z]{2,3}$">
+    <span *ngIf="email.invalid && (email.touched || email.dirty)">
+        <mat-hint *ngIf="email.errors?.['required']">This is
+            Required</mat-hint><!--[class]="!email.touched?'email-m1':'email-m2'"-->
         <mat-hint *ngIf="email.errors?.['minlength']">Min 8 characters needed</mat-hint>
         <mat-hint *ngIf="email.errors?.['pattern']">Pattern unmatched</mat-hint>
     </span>
@@ -10,17 +12,18 @@
 
     <label>Password</label><br>
     <div class="password">
-        <input [type]="password? 'text':'password'" name="password" [(ngModel)]="loginObj.password" #password="ngModel" minlength="8" 
-        required pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_{\-}+'>?`])[A-Za-z0-9!@#$%^&*_{\-}+'>?`]{8,16}$">
-        <mat-icon  (click)="toggleEye()" *ngIf="password">visibility</mat-icon>
-        <mat-icon (click)="toggleEye()" *ngIf="!password">visibility_off</mat-icon>
+        <input [type]="passwordToggle? 'text':'password'" name="password" [(ngModel)]="loginObj.password"
+            #password="ngModel" minlength="8" required
+            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_{\-}+'>?`])[A-Za-z0-9!@#$%^&*_{\-}+'>?`]{8,16}$">
+        <mat-icon (click)="toggleEye()" *ngIf="passwordToggle">visibility</mat-icon>
+        <mat-icon (click)="toggleEye()" *ngIf="!passwordToggle">visibility_off</mat-icon>
     </div>
     <span *ngIf="password.invalid && (password.touched || password.dirty)">
-        <mat-hint id="errormessage"  *ngIf="password.errors?.['required']">this is required</mat-hint>
-        <mat-hint id="errormessage"  *ngIf="password.errors?.['minlength']">Min 8 characters needed</mat-hint>
-        <mat-hint id="errormessage"  *ngIf="password.errors?.['pattern']">Pattern unmatched</mat-hint>
+        <mat-hint id="errormessage" *ngIf="password.errors?.['required']">this is required</mat-hint>
+        <mat-hint id="errormessage" *ngIf="password.errors?.['minlength']">Min 8 characters needed</mat-hint>
+        <mat-hint id="errormessage" *ngIf="password.errors?.['pattern']">Pattern unmatched</mat-hint>
     </span>
-    
+
     <a class="forgetLink">Forgot Password?</a>
 
     <br>

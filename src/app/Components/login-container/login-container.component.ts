@@ -16,9 +16,9 @@ export class LoginContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  password=false;
+  passwordToggle=true;
   toggleEye(){
-    this.password=!this.password
+    this.passwordToggle=!this.passwordToggle
   }
 
   loginObj:any={

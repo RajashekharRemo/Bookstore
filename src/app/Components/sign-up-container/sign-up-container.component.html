@@ -20,10 +20,10 @@
     <br> 
     <label>Password</label><br>
     <div class="password">
-        <input [type]="password? 'text':'password'" name="password" [(ngModel)]="userObj.password" #password="ngModel" minlength="8" 
+        <input [type]="passwordToggle? 'text':'password'" name="password" [(ngModel)]="userObj.password" #password="ngModel" minlength="8" 
         required pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_{\-}+'>?`])[A-Za-z0-9!@#$%^&*_{\-}+'>?`]{8,16}$">
-        <mat-icon  (click)="toggleEye()" *ngIf="password">visibility</mat-icon>
-        <mat-icon (click)="toggleEye()" *ngIf="!password">visibility_off</mat-icon>
+        <mat-icon  (click)="toggleEye()" *ngIf="passwordToggle">visibility</mat-icon>
+        <mat-icon (click)="toggleEye()" *ngIf="!passwordToggle">visibility_off</mat-icon>
     </div>
     <span *ngIf="password.invalid && (password.touched || password.dirty)" class="password-message">
         <mat-hint id="errormessage"  *ngIf="password.errors?.['required']">this is required</mat-hint>
